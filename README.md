@@ -1,7 +1,7 @@
 # hf2_lua_state_dump_database
 A centralized database of Lua State Dump information from Homefront: The Revolution. .csv is automatically updated after each commit pushed.
 
-Copyright (c) 2024 HeyItsDuke
+Copyright (c) 2024 HFModding
 
 This project is licensed under the Mozilla Public License, Version 2.0 (MPL-2.0). You may obtain a copy of the License at:
 
