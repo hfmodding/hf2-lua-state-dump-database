@@ -1,5 +1,5 @@
 # hf2_lua_state_dump_database
-A centralized database of Lua State Dump information from Homefront: The Revolution. .csv is automatically updated after each commit pushed.
+A centralized database of Lua State Dump information from Homefront: The Revolution. .csv is updated after triggering the workflow action.
 
 Copyright (c) 2024 HFModding
 
