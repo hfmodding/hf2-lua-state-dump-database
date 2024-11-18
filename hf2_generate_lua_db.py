@@ -9,6 +9,7 @@ import glob
 import os
 import sys
 import time
+import gzip
 
 
 # Set up the log file to capture all print output
@@ -210,6 +211,27 @@ LOG_FILE.close()
 
 # Final message to the console
 print(f"Process complete. Log saved to '{LOG_FILE_PATH}'.")
+
+
+def compress_log_file(log_file_path):
+    """
+    This function compresses the log files to save space.
+    """
+    # Open the original log file in binary read mode
+    with open(log_file_path, 'rb') as f_in:
+        # Open the gzipped file for writing in binary mode
+        with gzip.open(f'{log_file_path}.gz', 'wb') as f_out:
+            # Read and write in chunks
+            while chunk := f_in.read(1024):  # Read in chunks of 1024 bytes
+                f_out.write(chunk)
+
+    # Optionally, remove the original log file after compression if you don't need it
+    os.remove(log_file_path)
+
+
+compress_log_file(LOG_FILE_PATH)
+# Log Compressed
+print(f"Log'{LOG_FILE_PATH}'compressed.")
 
 # -- Copyright (c) 2024 HeyItsDuke
 # -- This file is licensed under the Mozilla Public License, Version 2.0 (MPL-2.0).

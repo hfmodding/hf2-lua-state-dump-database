@@ -29,7 +29,7 @@ jobs:
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         
         # Add CSV and log files to the commit
-        git add *.csv generation_log_*.txt
+        git add *.csv generation_log_*.txt generation_log_*.gz
         
         # Check if there are any changes, then commit
         git diff --cached --quiet || git commit -m "Auto-generated Lua database and logs from latest dumps"
