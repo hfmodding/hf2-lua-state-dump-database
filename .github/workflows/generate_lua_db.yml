@@ -18,10 +18,25 @@ jobs:
 
     - name: Install dependencies
       run: |
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        echo "Installing dependencies"
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; else echo "requirements.txt not found"; fi
+        echo "Dependencies installed"
+
+    - name: Verify Python Installation and Path
+      run: |
+        python --version
+        pip list  # Verify installed packages (to check if requirements were installed correctly)
 
     - name: Run database generation script
-      run: python hf2_generate_lua_db.py  # Run your script to process the dumps and output the CSV
+      run: |
+        echo "Running the database generation script"
+        python hf2_generate_lua_db.py  # Run your script to process the dumps and output the CSV
+      continue-on-error: true  # Let’s add this here temporarily for debugging
+
+    - name: Check script output (Debugging)
+      run: |
+        echo "Listing files to confirm script output"
+        ls -l  # This will list files and help confirm if the output CSV files were created
 
     - name: Commit and Push CSV File
       run: |
