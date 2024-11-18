@@ -23,18 +23,18 @@ jobs:
     - name: Run database generation script
       run: python hf2_generate_lua_db.py  # Run your script to process the dumps and output the CSV
 
-- name: Commit and Push CSV and Log Files
-  run: |
-    git config --local user.name "github-actions[bot]"
-    git config --local user.email "github-actions[bot]@users.noreply.github.com"
-    
-    # Add CSV and log files to the commit
-    git add *.csv generation_log_*.txt
-    
-    # Check if there are any changes, then commit
-    git diff --cached --quiet || git commit -m "Auto-generated Lua database and logs from latest dumps"
-    
-    # Use Personal Access Token to push changes
-    git push https://x-access-token:${{ secrets.GEN_DB_PAT_TOKEN_EXP_NOV_17_2025 }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
-  continue-on-error: true
+    - name: Commit and Push CSV and Log Files
+      run: |
+        git config --local user.name "github-actions[bot]"
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        
+        # Add CSV and log files to the commit
+        git add *.csv generation_log_*.txt
+        
+        # Check if there are any changes, then commit
+        git diff --cached --quiet || git commit -m "Auto-generated Lua database and logs from latest dumps"
+        
+        # Use Personal Access Token to push changes
+        git push https://x-access-token:${{ secrets.GEN_DB_PAT_TOKEN_EXP_NOV_17_2025 }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
+      continue-on-error: true
 
