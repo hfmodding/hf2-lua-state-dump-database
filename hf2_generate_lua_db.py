@@ -13,6 +13,7 @@ import time
 
 # Set up the log file to capture all print output
 LOG_FILE_PATH = f'generation_log_{time.strftime("%Y%m%d_%H%M%S")}.txt'
+print(f"Log file will be saved to: {LOG_FILE_PATH}")
 
 
 # Define a class to write to both stdout (console) and a log file
